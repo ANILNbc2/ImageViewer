@@ -76,19 +76,16 @@ class Header extends Component {
         <div className="title" onClick={this.redirectToHome}>Image Viewer</div>
 
         <div className="displaySearchBar">
-          {this.props.showSearchBar === true ?
-              
-              <div id="searchBar">
-                
+          {this.props.showSearchBar === true ?              
+              <div id="searchBar">              
                 <div className="searchIcon">
                   <SearchIcon/>
-                </div>
-                
-                <Input className="searchInput" onChange={this.props.searchChangeHandler} disableUnderline={true}
+                </div>                
+                <Input className="searchInput" onChange={this.props.searchHandler} disableUnderline={true}
                       placeholder="Search..."/>
               </div> : ""}
           
-          
+            { this.props.showIcon === true ?
             <IconButton id="profile-icon" edge="start" color="inherit" aria-label="menu">
               {this.state.userProfileData ?
                 <Avatar alt={this.state.userProfileData.full_name} id="profile-icon" fontSize="small"
@@ -104,7 +101,9 @@ class Header extends Component {
                 <MenuItem onClick={this.redirectToProfile}>My Account</MenuItem>
                 <MenuItem onClick={this.logoutUser}>Logout</MenuItem>
               </Menu>
-            </IconButton>    
+            </IconButton>   
+            :""
+            } 
         </div>
 
       </div>

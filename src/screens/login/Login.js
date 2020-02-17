@@ -68,7 +68,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <Header {...this.props}  showSearchBar={false}/>
+        <Header {...this.props}  showSearchBar={false} showIcon={false}/>
         <div className="loginpagecontent">
           <Card className="logincard">
             <CardContent>

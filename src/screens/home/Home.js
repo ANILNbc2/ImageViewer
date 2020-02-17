@@ -59,12 +59,29 @@ class Home extends Component {
       );
   }
 
+  checkIfExist = (element) => {
+    return element.caption.text.toUpperCase().split("#")[0].indexOf(this.state.searchText.toUpperCase()) > -1
+  }
+
+  onTextSearch = event => {
+    this.setState({ searchText: event.target.value });
+    if ( this.state.searchText == null || this.state.searchText.trim() === "" ) {
+      this.setState({filterData: this.state.userMediaData});
+    } else {
+      var filterData = this.state.userMediaData.filter( this.checkIfExist );
+      this.setState({filterData: filterData});
+    }
+  }
+
+
   render() {
     return (
       <div>
         <Header
           {...this.props}
-          showSearchBar={true}          
+          showSearchBar={true}    
+          showIcon={true}      
+          searchHandler={this.onTextSearch}
         />
         <Container>
           <ImageCard {...this.props} userMediaData={this.state.filterData}/>
