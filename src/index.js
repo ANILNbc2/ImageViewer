@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Login from './screens/login/Login';
 
-ReactDOM.render(
-    <span>
-        <App/>
-    </span>, 
-    document.getElementById('root')
-);
 
-ReactDOM.render(<App />, document.getElementById('root'));
+class Index extends Component {
+    constructor() {
+      super();
+      this.baseUrl = 'https://api.instagram.com/v1/users/self/';
+    }
+    render() {
+      return (
+        <Router>
+          <div className="main-container">
+            <Route exact path='/' render={(props) => <Login {...props} baseUrl={this.baseUrl} />} />            
+          </div>
+        </Router>
+      )
+    }
+  }
+
+ReactDOM.render(<Index />, document.getElementById('root'));
