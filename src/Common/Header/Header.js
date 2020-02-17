@@ -61,7 +61,7 @@ class Header extends Component {
 
   /*redirect to profile page*/
   redirectToProfile = () => {
-    this.props.history.push("/profile");
+    this.props.history.push("/home");
   };
 
   /*redirect to home page*/
