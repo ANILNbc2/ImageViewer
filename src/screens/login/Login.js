@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import "./Login.css";
-import Header from "../../common/header/Header";
+import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import FormControl from "@material-ui/core/FormControl";
-import Typography from "@material-ui/core/Typography";
-import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
 import FormHelperText from "@material-ui/core/FormHelperText";
-import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+
+import "./Login.css";
+import Header from "../../common/header/Header";
 
 class Login extends Component {
   constructor() {
@@ -23,7 +24,7 @@ class Login extends Component {
     };
   }
 
-  inputUsernameChangeHandler = e => {
+  inputUsername = e => {
     this.setState({
       username: e.target.value
     });
@@ -33,7 +34,8 @@ class Login extends Component {
       this.setState({ usernameRequired: false });
     }
   };
-  inputPasswordChangeHandler = e => {
+
+  inputPassword = e => {
     this.setState({
       password: e.target.value
     });
@@ -43,7 +45,8 @@ class Login extends Component {
       this.setState({ passwordRequired: false });
     }
   };
-  loginClickHandler = () => {
+  
+  loginClicked = () => {
     this.setState({ loginError: false });
 
     if (this.state.username !== "" && this.state.password !== "") {
@@ -65,20 +68,20 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <Header {...this.props} showSearchBarAndProfileIcon={false}/>
-        <div className="login-page-content">
-          <Card className="login-card">
-            <CardContent className="login-card-content">
-              <Typography className="login-card-heading" component="div">
+        <Header {...this.props}  showSearchBar={false}/>
+        <div className="loginpagecontent">
+          <Card className="logincard">
+            <CardContent>
+              <Typography component="div">
                 LOGIN
               </Typography>
-              <FormControl className="login-card-form-username" required>
+              <FormControl className="logincardform" required>
                 <InputLabel htmlFor="username">Username</InputLabel>
                 <Input
                   id="username"
                   type="text"
                   username={this.state.username}
-                  onChange={this.inputUsernameChangeHandler}
+                  onChange={this.inputUsername}
                 />
                 {this.state.usernameRequired ? (
                   <FormHelperText>
@@ -88,13 +91,13 @@ class Login extends Component {
               </FormControl>
               <br/>
               <br/>
-              <FormControl className="login-card-form-password" required>
+              <FormControl className="logincardform" required>
                 <InputLabel htmlFor="password">Password</InputLabel>
                 <Input
                   id="password"
                   type="password"
                   password={this.state.password}
-                  onChange={this.inputPasswordChangeHandler}
+                  onChange={this.inputPassword}
                 />
                 {this.state.passwordRequired ? (
                   <FormHelperText>
@@ -113,11 +116,10 @@ class Login extends Component {
               ) : null}
               <br/>
               <Button
-                className="login-card-button"
                 variant="contained"
                 color="primary"
                 disabled={this.state.username === "" || this.state.password === ""}
-                onClick={this.loginClickHandler}
+                onClick={this.loginClicked}
               >
                 LOGIN
               </Button>

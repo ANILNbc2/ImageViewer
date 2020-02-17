@@ -2,20 +2,19 @@
     color: red;
 }
 
-.login-page-content {
+.loginpagecontent {
     width: 100%;
     text-align: -webkit-center;
     margin-top: 1rem;
 }
 
-.login-card {
+.logincard {
     text-align: left;
     width: fit-content;
     padding: 40px;
     margin: 10px;
 }
 
-.login-card-form-username,
-.login-card-form-password {
+.logincardform {
     width: 300px;
 }
