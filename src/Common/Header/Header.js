@@ -61,7 +61,7 @@ class Header extends Component {
 
   /*redirect to profile page*/
   redirectToProfile = () => {
-    this.props.history.push("/home");
+    this.props.history.push("/profile");
   };
 
   /*redirect to home page*/
@@ -98,7 +98,10 @@ class Header extends Component {
                 open={Boolean(this.state.anchorEl)}
                 onClose={this.closeMenuOnClick}
               >
+                { this.props.showMyAccount === true ?
                 <MenuItem onClick={this.redirectToProfile}>My Account</MenuItem>
+                : ""
+              }
                 <MenuItem onClick={this.logoutUser}>Logout</MenuItem>
               </Menu>
             </IconButton>   

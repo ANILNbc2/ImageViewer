@@ -80,7 +80,8 @@ class Home extends Component {
         <Header
           {...this.props}
           showSearchBar={true}    
-          showIcon={true}      
+          showIcon={true}  
+          showMyAccount={true}    
           searchHandler={this.onTextSearch}
         />
         <Container>
