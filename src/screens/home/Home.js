@@ -17,7 +17,7 @@ class Home extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.state.loggedIn === false) {
       this.props.history.push("/");
     }
@@ -32,7 +32,6 @@ class Home extends Component {
     .then(
       (result) => {
         this.setState({ userProfileData: result.data });
-
       },
       (error) => {
         console.log("Error fetching user profile data from Instagram", error);
@@ -68,7 +67,7 @@ class Home extends Component {
           showSearchBar={true}          
         />
         <Container>
-          <ImageCard {...this.props} userMediaData={this.state.userMediaDataFiltered}/>
+          <ImageCard {...this.props} userMediaData={this.state.filterData}/>
         </Container>        
       </div>
     );
